@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (insuranceId) {
         try {
-            // Fetch insurance holder data by ID
             const response = await fetch(`/api/home-insurance/${insuranceId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch insurance holder data');
@@ -91,17 +90,36 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('premium-amount').value = insuranceData.premiumAmount;
             document.getElementById('filename').value = insuranceData.filename;
 
-            // Convert binary image data to data URL and set it as the image source
-            const imageDataUrl = `data:${insuranceData.image.contentType};base64,${insuranceData.image.data.$binary.base64}`;
-            const imgElement = document.getElementById('house-image');
-            imgElement.src = imageDataUrl;
+            // Display the current image if available
+            if (insuranceData.imagePath) {
+                const imgElement = document.createElement('img');
+                imgElement.src = insuranceData.imagePath;
+                imgElement.style.maxWidth = "200px"; // Optional: constrain image size for consistency
+                document.getElementById('image-preview').appendChild(imgElement);
+            }
 
-            const submitButton = document.getElementById('submit-button'); // Get the submit button element
-            submitButton.textContent = 'Update'; // Change button text to 'Update'
+            // Update the submit button text
+            const submitButton = document.getElementById('submit-button');
+            submitButton.textContent = 'Update';
+
+            // Handle file selection for image update
+            const imageInput = document.getElementById('image-upload');
+            imageInput.addEventListener('change', async (event) => {
+                const newImageFile = event.target.files[0];
+                if (newImageFile) {
+                    const newImageFileDataUrl = await readFileAsDataURL(newImageFile);
+                    // Update the image preview
+                    const imgElement = document.getElementById('image-preview').querySelector('img') || document.createElement('img');
+                    imgElement.src = newImageFileDataUrl;
+                    document.getElementById('image-preview').appendChild(imgElement);
+                }
+            });
         } catch (error) {
             console.error('Error fetching insurance holder data:', error);
         }
     }
+    
+    
 });
 
 // Function to read file as Data URL

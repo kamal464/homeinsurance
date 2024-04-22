@@ -27,15 +27,19 @@ const homeInsuranceSchema = mongoose.Schema(
             type: String,
             required: [true, "Please enter the filename"]
         },
-        image: {
-            data: Buffer, // Store the image data as a Buffer
-            contentType: String // Store the image content type
-        }
+        // image: {
+        //     data: Buffer, 
+        //     contentType: {
+        //         type: String,
+        //         required: true
+        //     }
+        // }
     },
     {
         timestamps: true
     }
 );
+
 
 const HomeInsurance = mongoose.model('HomeInsurance', homeInsuranceSchema);
 
