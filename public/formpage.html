@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Create Home Insurance</h1>
+        <form id="create-form">
+            <div class="mb-3">
+                <label for="policy-holder-name" class="form-label">Policy Holder's Name</label>
+                <input type="text" class="form-control" id="policy-holder-name" required>
+            </div>
+            <div class="mb-3">
+                <label for="property-address" class="form-label">Property Address</label>
+                <input type="text" class="form-control" id="property-address" required>
+            </div>
+            <div class="mb-3">
+                <label for="coverage-type" class="form-label">Coverage Type</label>
+                <input type="text" class="form-control" id="coverage-type" required>
+            </div>
+            <div class="mb-3">
+                <label for="premium-amount" class="form-label">Premium Amount</label>
+                <input type="number" class="form-control" id="premium-amount" required>
+            </div>
+            <div class="mb-3">a
+                <label for="filename" class="form-label">Filename</label>
+                <input type="text" class="form-control" id="filename" required>
+            </div>
+            <div class="mb-3">
+                <label for="image-upload" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="image-upload" accept="image/*" required>
+            </div>
+            <button type="submit" id="submit-button" class="btn btn-primary">Create</button> <!-- Add id to the button for easy access -->
+        </form>
+    </div>
+
+    <script src="./js/formpage.js"></script>
+</body>
+</html>

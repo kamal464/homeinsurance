@@ -1,0 +1,13 @@
+/* body{
+    color:rgba(243, 232, 232, 0.972) (221, 230, 223);
+    background-color: #1d2630;   
+} */
+
+body {
+    background-color: beige;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: green;
+    text-align: center;
+}
